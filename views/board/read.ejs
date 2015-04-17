@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%= title %></title>
+
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="/javascripts/jquery-1.11.2.min.js"></script>
+
+    <script>
+        $(function () {
+            //   alert('t');
+            $("#modify").click(function () {
+                //     alert('modify clicked');
+                location.href = "/board/update/<%=page%>/<%=data.num%>";
+            });
+
+            $("#show_del").click(function () {
+                $("#frm1").show();
+                $("#span1").hide();
+
+            });
+
+            $("#cancel").click(function () {
+                $("#frm1").hide();
+                $("#span1").show();
+
+            });
+
+            $("#del").click(function(){
+                if( $("#passwd").val() == ""){
+                    alert("비밀번호를 꼭 입력하세요");
+                    $("#passwd").focus();
+                    return;
+                }
+
+                document.frm1.submit();
+            });
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+<a href="/board/list/<%= page %>">게시판</a>
+
+<table>
+    <tr>
+        <th>제목</th>
+        <td><%= data.title %></td>
+    </tr>
+    <tr>
+        <th>내용</th>
+        <td><%= data.content %></td>
+    </tr>
+    <tr>
+        <th>아이디</th>
+        <td><%= data.id %></td>
+    </tr>
+    <tr>
+        <th>날짜</th>
+        <td><%= data.regdate %></td>
+    </tr>
+    <tr>
+        <th>조회수</th>
+        <td><%= data.hit %></td>
+    </tr>
+    <tr>
+        <th>댓글수</th>
+        <td><%= data.reply %></td>
+    </tr>
+    <tr>
+        <th>추천</th>
+        <td><%= data.recmd %></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+
+            <span id="span1">
+            <input type="button" value="수정" id="modify">
+            <input type="button" value="삭제" id="show_del">
+            </span>
+            <span id="span2">
+            <form action="/board/delete" method="post" style="display:inline;display:none" name="frm1" id="frm1">
+                <input type="hidden" name="num" value="<%= data.num %>">
+                <input type="hidden" name="page" value="<%= page %>">
+                비밀번호 : <input type="password" name="passwd" size="12" maxlength="12" id="passwd">
+                <input type="button" value="Del" id="del">
+                <input type="button" value="cancel" id="cancel">
+
+            </form>
+            </span>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

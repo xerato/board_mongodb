@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<a href="/board/list">리스트</a><br/>
+<form action="/board/write" method="post">
+    <table>
+        <tr>
+            <th>제목</th>
+            <td><input type="text" name="title" size="30" maxlength="50"></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td><input type="password" name="passwd" size="12" maxlength="12"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><textarea name="content" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="write"></td>
+        </tr>
+    </table>
+
+</form>
+
+</body>
+</html>
