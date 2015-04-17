@@ -87,12 +87,16 @@ router.post('/delete', function (req, res, next) {
     var _id = req.body._id;
     var passwd = req.body.passwd;
 
-    BoardModel.remove({_id: _id, passwd: passwd}, function (err, doc) {
+    BoardModel.remove({_id: _id, passwd: passwd}, function (err) {
 
+        console.log('a');
+        console.log('err:',err);
         if (err) {
+            console.log('b');
             console.error('err', err);
             res.json({result: 'fail'});
         } else {
+            console.log('c');
             res.json({result: 'ok'});
         }
     });
