@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../models/db');
+require('../models/boardmodel');
+var BoardModel = db.model('Board');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -10,6 +10,9 @@ var options = {
 
 var db = mongoose.createConnection(uri, options);
 
+var autoinc = require('mongoose-id-autoinc');
+autoinc.init(db); // √ ±‚»≠
+
 db.on('error', function(err){
    if(err) console.error('db err', err);
 });
