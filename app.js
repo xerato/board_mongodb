@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var moment = require('moment');
-var mocha = require('mocha');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
 
 
 var http = require('http');
-app.set('port', 3000);
+app.set('port', 8080);
 var server = http.createServer(app);
 server.listen(app.get('port'));
 console.log('server running'
